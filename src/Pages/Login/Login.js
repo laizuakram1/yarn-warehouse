@@ -1,13 +1,16 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaGoogle, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading';
 
 
 const Login = () => {
+    const location = useLocation();
     const navigate = useNavigate();
+    let from = location.state?.from?.pathname || "/";
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
@@ -18,9 +21,11 @@ const Login = () => {
             .then((result) => {
                 // Signed in 
                 const user = result.user;
-                console.log(user);
-                navigate('/')
-                // ...
+               
+                if(user){
+                    navigate(from, { replace: true });
+                }
+              // ...
             })
             .catch((error) => {
                 const err = error.message;
@@ -28,10 +33,6 @@ const Login = () => {
             });
     }
 
-
-
-
-    
 
     return (
         <div className='py-16 max-h-screen bg-success'>

@@ -1,10 +1,10 @@
 import React from 'react';
-import { SpinnerCircularSplit } from 'spinners-react';
+// import { SpinnerCircularSplit } from 'spinners-react';
 
 const Loading = () => {
     return (
         <div>
-            <SpinnerCircularSplit/>
+           <button class="btn loading">loading</button>
         </div>
     );
 };
