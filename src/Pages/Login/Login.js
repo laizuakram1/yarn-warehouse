@@ -2,9 +2,9 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaGoogle, FaFacebook, FaLinkedin } from "react-icons/fa";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, isLoading } from "firebase/auth";
 import auth from '../../firebase.init';
-import Loading from '../Shared/Loading';
+import backgrondImg from '../../Images/Slider/loginBg.jpg';
 
 
 const Login = () => {
@@ -21,7 +21,7 @@ const Login = () => {
             .then((result) => {
                 // Signed in 
                 const user = result.user;
-               
+              
                 if(user){
                     navigate(from, { replace: true });
                 }
@@ -35,9 +35,9 @@ const Login = () => {
 
 
     return (
-        <div className='py-16 max-h-screen bg-success'>
+        <div style={{ backgroundImage: `url(${backgrondImg})` }} className='py-16 max-h-screen bg-cover'>
             <form onSubmit={handleSubmit(onSubmit)}
-                className='flex flex-col w-80 mx-auto gap-5 p-10 pt-24 shadow-xl rounded relative bg-base-100'>
+                className='flex flex-col w-80 h-96 mx-auto gap-5 p-10 pt-24 shadow-xl rounded relative bg-base-100'>
 
                 <input type="email" placeholder="E-mail" class="input input-bordered input-sm w-full max-w-xs" {...register("email", { required: true })} />
                 <input type="password" placeholder="Password" class="input input-bordered input-sm w-full max-w-xs" {...register("password", { required: true })} />
