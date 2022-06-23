@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaGoogle, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { signInWithEmailAndPassword, isLoading } from "firebase/auth";
 import auth from '../../firebase.init';
 import backgrondImg from '../../Images/Slider/loginBg.jpg';
+import { toast } from 'react-toastify';
+import useToken from '../Hooks/useToken';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
 
 const Login = () => {
+    const [signInWithGoogle, gUser, loading, error] = useSignInWithGoogle(auth);
     const location = useLocation();
     const navigate = useNavigate();
+    const [token] = useToken();
     let from = location.state?.from?.pathname || "/";
+
+    if(gUser){
+        navigate(from, { replace: true });
+    }
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
@@ -21,11 +30,11 @@ const Login = () => {
             .then((result) => {
                 // Signed in 
                 const user = result.user;
-              
-                if(user){
-                    navigate(from, { replace: true });
-                }
-              // ...
+                toast.success('login successfull')
+                // if (user) {
+                //     navigate(from, { replace: true });
+                // }
+                // ...
             })
             .catch((error) => {
                 const err = error.message;
@@ -33,6 +42,15 @@ const Login = () => {
             });
     }
 
+    
+        useEffect( () =>{
+            if(token){
+                navigate(from, { replace: true });
+            }
+        }, [token, from, navigate])
+
+        
+         
 
     return (
         <div style={{ backgroundImage: `url(${backgrondImg})` }} className='py-16 max-h-screen bg-cover'>
@@ -48,15 +66,15 @@ const Login = () => {
                 </div>
                 <p>New to laizu yarn? <Link className='text-primary hover:link-hover' to='/signup'>Signup</Link></p>
 
-                <div className='social-login w-64 h-20 bg-blue-400 p-5 rounded-md absolute -mt-28'>
+                <div className='social-login w-64 h-20 bg-blue-400 p-3 rounded-md absolute -mt-28'>
                     <div>
                         <div>
                             <h2 className='text-center text-2xl font-bold'>Login</h2>
                         </div>
-                        <div className='icons flex mr-10'>
-                            <FaGoogle />
-                            <FaFacebook />
-                            <FaLinkedin />
+                        <div className='flex flex-col-3 justify-evenly py-3 text-white'>
+                            <FaGoogle onClick={()=>signInWithGoogle()} className='hover:text-orange-500 cursor-pointer' />
+                            <FaFacebook className='hover:text-orange-500 cursor-pointer' />
+                            <FaLinkedin className='hover:text-orange-500 cursor-pointer' />
                         </div>
                     </div>
                 </div>

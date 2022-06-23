@@ -3,6 +3,7 @@ import DisplayReview from './DisplayReview';
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
+    
 
     useEffect(() => {
         fetch(`http://localhost:5000/reviews`)

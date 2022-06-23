@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import Footer from '../Shared/Footer';
 import auth from '../../firebase.init';
@@ -16,39 +16,38 @@ const Purchase = () => {
     const [user, loading, error] = useAuthState(auth);
    
 
-    const { register, reset , formState: { errors }, handleSubmit } = useForm();
-    console.log(errors);
-    const onSubmit = purchaseData => {
-        if(errors){
-            setError(errors);
-        }
-
-        const url = (`http://localhost:5000/purchase`);
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(purchaseData)
-        })
-        .then(res=> res.json())
-        .then(data => {
-            if(data.insertedId){
-                toast.success("purchase successful");
-                reset();
-            }
-            else{
-                toast.error('sorry! cannot process your purchase')
-            }
-        })
-    }
-
+   
+    
     useEffect(() => {
         fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data));
 
-    }, [id])
+    }, []);
+
+    const { register, reset, handleSubmit } = useForm();
+   
+    const onSubmit = Data => {
+        const url = ('http://localhost:5000/purchase')
+        fetch(url, {
+            method:'POST',
+            headers:{
+                'content-type': "application/json"
+            },
+            body:JSON.stringify(Data)
+        })
+        .then(res=>res.json())
+        .then(data =>{
+            if(data.insertedId){
+                toast('Purchase successful')
+                reset();
+            }
+            else{
+                toast('sorry! something wrong')
+            }
+        })
+        
+    }
 
     return (
         <div className='max-h-screen' >
@@ -56,16 +55,17 @@ const Purchase = () => {
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-1'>
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)} className='grid  gap-5 px-24 w-full'>
-                        <input type="text" {...register('name', {required:true})} placeholder={user?.displayName || 'Your Name'}
+                        <input type="text" {...register('name', {required:true})}
+                          placeholder={user?.displayName || 'Your Name'}
                             class="input input-bordered input-success w-full max-w-xs" />
 
-                        <input type="email" {...register('email', {required:true})} value={user?.email} placeholder={user?.email || 'E-mail'}
+                        <input type="email" {...register('email', {required:true})}   placeholder={user?.email}
                             class="input input-bordered input-success w-full max-w-xs" />
 
-                        <input type="text" {...register('productName', {required:true})} value={product?.name} placeholder={product?.name || 'Product Name'}
+                        <input type="text" {...register('productName', {required:true})}  placeholder={product.name}
                             class="input input-bordered input-success w-full max-w-xs" />
 
-                        <input type="number" {...register('quantity', {required:true})} placeholder={'quantity'}
+                        <input type="number" {...register('quantity', {required:true})} placeholder='quantity'
                             class="input input-bordered input-success w-full max-w-xs" />
 
                         <input type="number" {...register('phone', {required:true})} placeholder="Phone"
@@ -73,10 +73,10 @@ const Purchase = () => {
 
                         <input type="text" {...register('address', {required:true})} placeholder="Address"
                             class="input input-bordered input-success w-full max-w-xs" />
-                        <p>{err}</p>
+                        <p>{err.message}</p>
 
                         <div className='justify-center'>
-                            <button type='submit' class="btn btn-success w-24">Purchase</button>
+                           <input className='btn btn-success' type='submit' value='Submit'/>
                         </div>
                     </form>
                 </div>

@@ -3,33 +3,40 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import backgrondImg from '../../Images/Slider/loginBg.jpg';
+import { toast } from 'react-toastify';
+import useToken from '../Hooks/useToken';
+// import useToken from '../Hooks/useToken';
 
 
 
 const SignUp = () => {
     const navigate = useNavigate();
-
+    const [user, loading, error] = useAuthState(auth);
     const { register, handleSubmit } = useForm();
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [token] = useToken(user);
+
+    if(loading || gLoading){
+        return <loading></loading>
+    }
+    if (error) {
+        return (
+          <div>
+            <p>Error: {error.message}</p>
+          </div>
+        );
+      }
+     
+      if (user || gUser) {
+        navigate('/')
+      }
+
     const onSubmit = data => {
-        const email = data.email;
-        const password = data.password;
-
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((result) => {
-                // Signed in 
-                const user = result.user;
-                console.log(user);
-                navigate('/')
-                // ...
-            })
-            .catch((error) => {
-                const err = error.message;
-                console.log(err);
-                // ..
-            });
-
+        
     }
 
     return (
@@ -53,7 +60,7 @@ const SignUp = () => {
                             <h2 className='text-center text-2xl font-bold'>SignUp</h2>
                         </div>
                         <div className='flex flex-col-3 justify-evenly py-3 text-white'>
-                                <FaGoogle className='hover:text-orange-500 cursor-pointer' />
+                                <FaGoogle onClick={() =>signInWithGoogle()} className='hover:text-orange-500 cursor-pointer' />
                                 <FaFacebook className='hover:text-orange-500 cursor-pointer' />
                                 <FaLinkedin className='hover:text-orange-500 cursor-pointer' />
                             </div>
