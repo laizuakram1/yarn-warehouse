@@ -1,8 +1,25 @@
-import React from 'react';
+
+import React, { useEffect } from 'react';
+import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 
 const SendReview = () => {
+    const { register, handleSubmit } = useForm();
+    const onSubmit = data => {
 
-   
+        fetch(`http://localhost:5000/reviews`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('send review');
+            })
+    }; 
+
     return (
         <div class="mockup-phone mt-5">
             <div class="camera"></div>
@@ -14,12 +31,19 @@ const SendReview = () => {
                         <div class="hero-content flex-col lg:flex-row-reverse">
 
                             <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                                <form class="card-body">
+                                <form onSubmit={handleSubmit(onSubmit)} class="card-body">
                                     <div class="form-control">
-                                        <input type="text" placeholder="password" class="input input-bordered" />
+                                        <textarea {...register("comment", { required: true, maxLength: 200 })} type="text" placeholder="Your opinion"
+                                            class="input input-bordered h-20" />
+                                    </div>
+                                    <div class="form-control">
+                                        <label>
+                                            <p className='font-bold py-2'>Raings</p>
+                                        </label>
+                                    <input {...register("rating", { required: true,})} type='number' placeholder="rating in 5" class="input input-bordered w-full max-w-xs" />
                                     </div>
                                     <div class="form-control mt-6">
-                                        <button type='submit' class="btn btn-primary">Login</button>
+                                        <button type='submit' class="btn btn-primary">Send</button>
                                     </div>
                                 </form>
                             </div>

@@ -1,19 +1,16 @@
 import React from 'react';
 
-const DisplayReview = ({review}) => {
-    const {img, name, comment} = review;
+const DisplayReview = ({ review }) => {
+  const { comment, rating } = review;
 
-    return (
-        <div class="card max-w-lg bg-base-100 shadow-xl">
-        <figure class="px-10 pt-10">
-          <img src={img} alt="Shoes" class="rounded-xl" />
-        </figure>
-        <div class="card-body items-center text-center">
-          <h2 class="card-title">{name}</h2>
-          <p>{comment}</p>
-        </div>
+  return (
+    <div class="card max-w-lg bg-base-100 shadow-xl">
+      <div class="card-body">
+        <p>{comment}</p>
+        <p>Ratting: <span className='text-orange-400'>{rating}</span> /5</p>
       </div>
-    );
+    </div>
+  );
 };
 
 export default DisplayReview;

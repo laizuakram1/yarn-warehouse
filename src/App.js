@@ -12,6 +12,7 @@ import RequireAuth from "./Pages/Shared/RequireAuth";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import SendReview from "./Pages/Dashboard/SendReview";
+import MyProflile from "./Pages/Dashboard/MyProflile";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
           <Route path='/dashboard/orders' element={<MyOrders></MyOrders>}></Route>
           <Route path='/dashboard/review' element={<SendReview></SendReview>}></Route>
+          <Route path='/dashboard/profile' element={<MyProflile></MyProflile>}></Route>
         </Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
