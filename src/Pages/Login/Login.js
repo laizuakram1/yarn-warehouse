@@ -5,52 +5,38 @@ import { FaGoogle, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { signInWithEmailAndPassword, isLoading } from "firebase/auth";
 import auth from '../../firebase.init';
 import backgrondImg from '../../Images/Slider/loginBg.jpg';
-import { toast } from 'react-toastify';
-import useToken from '../Hooks/useToken';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import Loading from '../Shared/Loading';
 
 
 const Login = () => {
-    const [signInWithGoogle, gUser, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [user, loading, error] = useAuthState(auth);
+    const { register, formState: { errors }, handleSubmit } = useForm();
     const location = useLocation();
     const navigate = useNavigate();
-    const [token] = useToken();
     let from = location.state?.from?.pathname || "/";
+    let signInError;
 
-    if(gUser){
-        navigate(from, { replace: true });
+
+    useEffect( () =>{
+        if (user || gUser) {
+            navigate(from, { replace: true });
+        }
+    }, [user,gUser, from, navigate])
+
+    if (loading || gLoading) {
+        return <Loading></Loading>
     }
 
-    const { register, handleSubmit } = useForm();
+    if(error || gError){
+        signInError= <p className='text-red-500'><small>{error?.message || gError?.message }</small></p>
+    }
+
     const onSubmit = data => {
-        const email = data.email;
-        const password = data.password;
-
-        signInWithEmailAndPassword(auth, email, password)
-            .then((result) => {
-                // Signed in 
-                const user = result.user;
-                toast.success('login successfull')
-                // if (user) {
-                //     navigate(from, { replace: true });
-                // }
-                // ...
-            })
-            .catch((error) => {
-                const err = error.message;
-                console.log(err);
-            });
+        signInWithEmailAndPassword(auth, data.email, data.password);
     }
 
-    
-        useEffect( () =>{
-            if(token){
-                navigate(from, { replace: true });
-            }
-        }, [token, from, navigate])
-
-        
-         
 
     return (
         <div style={{ backgroundImage: `url(${backgrondImg})` }} className='py-16 max-h-screen bg-cover'>
@@ -62,12 +48,14 @@ const Login = () => {
 
                 <div className='flex justify-between items-center'>
                     <input className='btn w-20' type="submit" value='Submit' />
+
                     <Link className='text-blue-600 hover:link-hover' to='/'>Forgot password?</Link>
                 </div>
                 <p>New to laizu yarn? <Link className='text-primary hover:link-hover' to='/signup'>Signup</Link></p>
 
                 <div className='social-login w-64 h-20 bg-blue-400 p-3 rounded-md absolute -mt-28'>
                     <div>
+                        {signInError}
                         <div>
                             <h2 className='text-center text-2xl font-bold'>Login</h2>
                         </div>

@@ -8,7 +8,7 @@ import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import backgrondImg from '../../Images/Slider/loginBg.jpg';
 import { toast } from 'react-toastify';
-import useToken from '../Hooks/useToken';
+import useToken from '../../Hooks/useToken';
 // import useToken from '../Hooks/useToken';
 
 
@@ -18,7 +18,7 @@ const SignUp = () => {
     const [user, loading, error] = useAuthState(auth);
     const { register, handleSubmit } = useForm();
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-    const [token] = useToken(user);
+ 
 
     if(loading || gLoading){
         return <loading></loading>
@@ -36,7 +36,7 @@ const SignUp = () => {
       }
 
     const onSubmit = data => {
-        
+        createUserWithEmailAndPassword(auth, data.email, data.password)
     }
 
     return (

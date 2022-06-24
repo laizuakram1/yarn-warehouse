@@ -43,7 +43,7 @@ const SendReview = () => {
                                     <input {...register("rating", { required: true,})} type='number' placeholder="rating in 5" class="input input-bordered w-full max-w-xs" />
                                     </div>
                                     <div class="form-control mt-6">
-                                        <button type='submit' class="btn btn-primary">Send</button>
+                                        <button type='submit' class="btn btn-success hover:bg-green-200">Send</button>
                                     </div>
                                 </form>
                             </div>
