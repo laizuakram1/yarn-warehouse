@@ -33,6 +33,7 @@ const Navbar = () => {
             <ul class="menu menu-vertical lg:menu-horizontal bg-base-100 rounded-box mr-2">
                 <li><Link to='/'>Home</Link></li>
                 <li><Link to='/dashboard'>Dashboard</Link></li>
+                <li><Link to='/portfolio'>My Portfolio</Link></li>
                 <li><Link to='/blog'>Blog</Link></li>
                 <li><Link to='/about'>About</Link></li>
                 <li>{
