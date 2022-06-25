@@ -3,7 +3,7 @@ import React from 'react';
 const Achievement = () => {
     return (
         <div className='py-10'>
-            <h2 className='text-3xl font-bold'>Our <span className='text-success'>Achievements</span></h2>
+            <h2 className='text-3xl font-bold mb-3'>Our <span className='text-success'>Achievements</span></h2>
             <div class="stats shadow">
             
             <div class="stat">
