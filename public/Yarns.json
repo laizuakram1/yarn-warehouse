@@ -1,83 +1,64 @@
 [
     {
        
+        "img":"https://i.ibb.co/m0tFcXx/github2.png",
+        "name":"Hollister",
+        "location":"USA"  
+    },
+    {
+       
+        "img":"https://i.ibb.co/4ZvNPrP/download.jpg",
+        "name":"Handmade",
+        "location":"China"  
+    },
+    {
+       
+        "img":"https://i.ibb.co/9gChDbD/Clothing-brand-Logo-design-Graphics-10579278-3-580x387.jpg",
+        "name":"Herren",
+        "location":"USA"  
+    },
+    {
+       
+        "img":"https://i.ibb.co/LSc3c7b/attachment-112619729-1.jpg",
+        "name":"Floor Henk",
+        "location":"Vietnam"    
+    },
+    {
+       
+        "img":"https://i.ibb.co/W0TyL68/attachment-101779732.jpg",
+        "name":"Harrisons",
+        "location":"USA"  
+    },
+    {
+       
+        "img":"https://i.ibb.co/NymSCrC/attachment-96210650.png",
+        "name":"Veer Freight",
+        "location":"Sweden"  
+    },
+    {
+       
+        "img":"https://i.ibb.co/p367C81/attachment-86769647.png",
+        "name":"Favourite Sun",
+        "location":"Germany"  
+    },
+    {
+       
         "img":"https://i.ibb.co/94cqhZ0/colorful-threads-white-surface.jpg",
-        "name":"Colorfull Yarn",
-        "price":13,
-        "quantity":50000,
-        "minimum-order":20,
-        "description":"This is our on of the most popular hit yarn worldwide"
+        "name":"Addidas",
+        "location":"japan"  
     },
     {
        
-        "img":"https://i.ibb.co/vxKNPr0/download-1.jpg",
-        "name":"Denim Yarn",
-        "price":13,
-        "quantity":50000,
-        "minimum-order":20,
-        "description":"This is our on of the most popular hit yarn worldwide"
+        "img":"https://i.ibb.co/YX0dnLV/attachment-81641127.png",
+        "name":"Marvelle",
+        "location":"California"  
     },
     {
        
-        "img":"https://i.ibb.co/8jYW13K/knitting-close-up-colorful-threads-table.jpg",
-        "name":"Knitting yarn",
-        "price":13,
-        "quantity":50000,
-        "minimum-order":20,
-        "description":"This is our on of the most popular hit yarn worldwide"
-    },
-    {
-       
-        "img":"https://i.ibb.co/94cqhZ0/colorful-threads-white-surface.jpg",
-        "name":"blue yarn",
-        "price":13,
-        "quantity":50000,
-        "minimum-order":20,
-        "description":"This is our on of the most popular hit yarn worldwide"
-    },
-    {
-        
-        "img":"https://i.ibb.co/mv0MLmK/knitting-close-up-blue-threads-table.jpg",
-        "name":"Knitting-colorfull yarn",
-        "price":13,
-        "quantity":50000,
-        "minimum-order":20,
-        "description":"This is our on of the most popular hit yarn worldwide"
-    },
-    {
-        
-        "img":"https://i.ibb.co/G3K9Gtn/textured-plaids-wicker-basket-gray-background.jpg",
-        "name":"Textured-plaids yarn",
-        "price":13,
-        "quantity":50000,
-        "minimum-order":20,
-        "description":"This is our on of the most popular hit yarn worldwide"
-    },
-    {
-       
-        "img":"https://i.ibb.co/C7fymVT/z-twist-yarn.jpg",
-        "name":"S-twist yarn",
-        "price":13,
-        "quantity":50000,
-        "minimum-order":20,
-        "description":"This is our on of the most popular hit yarn worldwide"
-    },
-    {
-       
-        "img":"https://i.ibb.co/1TPMxYG/closeup-image-various-colour-threads.jpg",
-        "name":"Plyester-blue yarn",
-        "price":13,
-        "quantity":50000,
-        "minimum-order":20,
-        "description":"This is our on of the most popular hit yarn worldwide"
-    },
-    {
-        
-        "img":"https://i.ibb.co/9rnDG7s/red-yarn-heart-shaped-wall-background.jpg",
-        "name":"Red yarn",
-        "price":13,
-        "quantity":50000,
-        "minimum-order":20,
-        "description":"This is our on of the most popular hit yarn worldwide"
+        "img":"https://i.ibb.co/p060QLP/26-min-1.jpg",
+        "name":"Tommy Hilfigure",
+        "location":"UK"  
     }
+    
+    
 ]

@@ -27,7 +27,7 @@ const Portfolio = () => {
             </div>
             <div class="border-opacity-50">
                 <div class="divider">Connect with me</div>
-                <div class="grid grid-cols-3 h-20 card bg-base-300 rounded-box place-items-center text-l ">
+                <div class="grid grid-cols-3 h-20 card bg-base-300 rounded-box place-items-center justify-evenly text-xl ">
                     <FaFacebook className='hover:text-orange-500'></FaFacebook>
                     <FaLinkedin className='hover:text-orange-500'></FaLinkedin>
                      <FaYoutube className='hover:text-orange-500'></FaYoutube>
