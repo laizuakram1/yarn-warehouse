@@ -15,12 +15,13 @@ const MyProfile = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
        
+       
         fetch(`http://localhost:5000/profile`,{
             method:'POST',
             headers:{
                 'conternt-type':'application/json'
             },
-            body:JSON.stringify({data})
+            body:JSON.stringify(data)
         })
         .then(res => res.json())
         .then(data => console.log(data))

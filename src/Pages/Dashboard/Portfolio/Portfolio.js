@@ -27,7 +27,7 @@ const Portfolio = () => {
             </div>
             <div class="border-opacity-50">
                 <div class="divider text-primary">Connect with me</div>
-                <div className='flex justify-center h-10 items-center text-xl'>
+                <div className='flex justify-center items-center h-12  text-xl'>
                    
                     <FaFacebook className='mr-5 hover:text-orange-500'></FaFacebook>
                     <FaLinkedin className=' mr-5 hover:text-orange-500'></FaLinkedin>

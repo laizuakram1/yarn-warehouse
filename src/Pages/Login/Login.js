@@ -7,23 +7,26 @@ import auth from '../../firebase.init';
 import backgrondImg from '../../Images/Slider/loginBg.jpg';
 import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
+import useToken from '../../Hooks/useToken';
 
 
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [user, loading, error] = useAuthState(auth);
+    const [token] = useToken(user || gUser)
     const { register, formState: { errors }, handleSubmit } = useForm();
     const location = useLocation();
     const navigate = useNavigate();
+
     let from = location.state?.from?.pathname || "/";
     let signInError;
 
 
     useEffect( () =>{
-        if (user || gUser) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user,gUser, from, navigate])
+    }, [token, from, navigate])
 
     if (loading || gLoading) {
         return <Loading></Loading>
