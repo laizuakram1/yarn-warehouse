@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
+import { HiOutlineDatabase } from 'react-icons/hi';
 
 
 
@@ -14,17 +15,20 @@ const MyProfile = () => {
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
+        console.log(data)
+        
+        const userProfile = data;
        
        
         fetch(`http://localhost:5000/profile`,{
             method:'POST',
-            headers:{
-                'conternt-type':'application/json'
-            },
-            body:JSON.stringify(data)
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body:JSON.stringify(userProfile)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(Resdata => console.log(Resdata))
     
     };
 
@@ -37,6 +41,8 @@ const MyProfile = () => {
                 <form onSubmit={handleSubmit(onSubmit)} >
                 <h2 className='text-2xl font-bold text-center py-3'>Update <span className='text-success'>Profile</span></h2>
                <div className='grid grid-cols-1 gap-2'>
+               <input 
+                {...register("image", {required:true})} type="text" placeholder="Image Url" class="input input-bordered input-md w-full max-w-xs" />
                <input 
                 {...register("name", {required:true})} type="text" placeholder="Name" class="input input-bordered input-md w-full max-w-xs" />
                 <input 

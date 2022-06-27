@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const DisplayYarn = ({yarn}) => {
     const { _id, img, name, price, description, quantity, minOrder} = yarn;
     return (
-        <div class="card max-w-lg bg-base-100 shadow-xl">
+        <div class="card w-72 bg-base-100 shadow-xl">
         <figure><img className='bg-cover' src={img} alt="yarn" /></figure>
         <div class="card-body">
           <h2 class="card-title">{name}</h2>

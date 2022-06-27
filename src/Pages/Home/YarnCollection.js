@@ -11,10 +11,10 @@ const YarnCollection = () => {
     }, [])
 
     return (
-        <div>
+        <div className='mx-10'>
 
             <h2 className='text-3xl text-success font-bold  py-10'>Our Qualified <span className='text-red-500'>Yarns</span></h2>
-            <div className='grid grid-cols-3 gap-5'>
+            <div className='grid grid-cols-3 gap-8'>
                 {
                     yarns.map(yarn => <DisplayYarn
 

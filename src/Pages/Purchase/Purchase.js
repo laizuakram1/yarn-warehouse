@@ -1,52 +1,67 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, useParams } from 'react-router-dom';
-import { useForm } from "react-hook-form";
+import { useParams } from 'react-router-dom';
 import Footer from '../Shared/Footer';
 import auth from '../../firebase.init';
-import Loading from '../Shared/Loading';
-import {toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 const Purchase = () => {
     const { id } = useParams();
-    const [err, setError] = useState('')
+    // const [err, setError] = useState('')
     const [product, setProduct] = useState([]);
     const [user, loading, error] = useAuthState(auth);
-   
 
-   
-    
+
     useEffect(() => {
         fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data));
 
-    }, []);
+    }, [id]);
 
-    const { register, reset, handleSubmit } = useForm();
-   
-    const onSubmit = Data => {
-        const url = ('http://localhost:5000/purchase')
-        fetch(url, {
-            method:'POST',
-            headers:{
-                'content-type': "application/json"
-            },
-            body:JSON.stringify(Data)
-        })
-        .then(res=>res.json())
-        .then(data =>{
-            if(data.insertedId){
-                toast('Purchase successful')
-                reset();
-            }
-            else{
-                toast('sorry! something wrong')
-            }
-        })
+
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const quantity = event.target.quantity.value;
+        if (quantity < product.minOrder || quantity > product.quantity) {
+            return   toast.error('enter a valid quantity');
+        }
+
+        const order = {
+            product: product.name,
+            quantity,
+
+            price: product.price * quantity,
+            client: user?.email,
+            clientName: user?.displayName,
+            phone: event.target.phone.value,
+            status: "pending",
+        }
+
         
+
+        fetch(`http://localhost:5000/purchase`, {
+            method: 'POST',
+            headers: {
+                 'content-type': 'application/json'
+                 },
+            body: JSON.stringify(order)
+            
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+               
+                if (data.result.insertedId) {
+                    toast.success("Order Placed Successfully")
+                } else {
+                    toast.error('Sorry,cannot process the order')
+                }
+            });
+
     }
 
     return (
@@ -54,30 +69,54 @@ const Purchase = () => {
             <h2 className='text-3xl font-bold py-10'><span className='text-success'>Purchase</span> Now</h2>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-1'>
                 <div>
-                    <form onSubmit={handleSubmit(onSubmit)} className='grid  gap-5 px-24 w-full'>
-                        <input type="text" {...register('name', {required:true})}
-                          placeholder={user?.displayName || 'Your Name'}
-                            class="input input-bordered input-success w-full max-w-xs" />
-
-                        <input type="email" {...register('email', {required:true})}   placeholder={user?.email}
-                            class="input input-bordered input-success w-full max-w-xs" />
-
-                        <input type="text" {...register('productName', {required:true})}  placeholder={product.name}
-                            class="input input-bordered input-success w-full max-w-xs" />
-
-                        <input type="number" {...register('quantity', {required:true})} placeholder='quantity'
-                            class="input input-bordered input-success w-full max-w-xs" />
-
-                        <input type="number" {...register('phone', {required:true})} placeholder="Phone"
-                            class="input input-bordered input-success w-full max-w-xs" />
-
-                        <input type="text" {...register('address', {required:true})} placeholder="Address"
-                            class="input input-bordered input-success w-full max-w-xs" />
-                        <p>{err.message}</p>
-
-                        <div className='justify-center'>
-                           <input className='btn btn-success' type='submit' value='Submit'/>
+                    <form onSubmit={handleSubmit} className='grid  gap-5 px-24 w-full'>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Your Name</span>
+                            </label>
+                            <input type="text" name='name' value={user?.displayName} className="input input-bordered" readOnly />
                         </div>
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">E-mail</span>
+                            </label>
+                            <input type="email" name='email' value={user?.email} className="input input-bordered" readOnly />
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Product Name</span>
+                            </label>
+                            <input type="text" name='porductName' value={product?.name} className="input input-bordered" readOnly />
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Order Quantity</span>
+                            </label>
+                            <input type="number" name='quantity' className="input input-bordered" />
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Phone Number</span>
+                            </label>
+                            <input type="number" name='phone' placeholder='phone number' className="input input-bordered" />
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Address</span>
+                            </label>
+                            <input type="text" name='address' className="input input-bordered" />
+                        </div>
+
+
+                        {/* <p>{err.message}</p> */}
+                             <input className='btn btn-success' type='submit' value='Submit' />
+                        
+                        
                     </form>
                 </div>
                 <div>
