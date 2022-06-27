@@ -1,5 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([])
@@ -9,10 +11,32 @@ const MyOrders = () => {
         .then(res => res.json())
         .then(data => setOrders(data));
 }, [])
+
+const deleteOrder = (id)=>{
+    const proced = window.confirm('Are really want to delete?');
+    
+    if(proced){
+      fetch(`http://localhost:5000/purchase/${id}`,{
+        method:'DELETE',
+
+      })
+      .then(res =>res.json())
+      .then(data =>{
+        if(data.deletedCount > 0){
+          
+          const remainingOrders = orders.filter(order =>order._id !== id)
+          setOrders(remainingOrders);
+          toast.warn('Order deleted');
+        }
+        
+        
+      })
+    }
+ 
+}
   
   return (
     <div>
-      <h2>my orders:{orders.length}</h2>
 
       <div class="overflow-x-auto">
   <table class="table table-zebra w-full justify-around">
@@ -35,7 +59,7 @@ const MyOrders = () => {
             <td>{order.quantity}</td>
             <td>{order.price}</td>
             <td>{order.status}</td>
-            <td><button className='btn btn-xs bg-red-400 border-none'>Delete</button></td>
+            <td><button onClick={()=>deleteOrder(order._id)} className='btn btn-xs bg-red-400 border-none'>Delete</button></td>
           </tr>)
         }
       
