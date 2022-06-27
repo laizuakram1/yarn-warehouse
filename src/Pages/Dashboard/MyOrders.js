@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
@@ -13,7 +14,7 @@ const MyOrders = () => {
 }, [])
 
 const deleteOrder = (id)=>{
-    const proced = window.confirm('Are really want to delete?');
+    const proced = window.confirm('sure! cancel your order?');
     
     if(proced){
       fetch(`http://localhost:5000/purchase/${id}`,{
@@ -34,6 +35,8 @@ const deleteOrder = (id)=>{
     }
  
 }
+
+
   
   return (
     <div>
@@ -58,8 +61,8 @@ const deleteOrder = (id)=>{
             <td>{order.product}</td>
             <td>{order.quantity}</td>
             <td>{order.price}</td>
-            <td>{order.status}</td>
-            <td><button onClick={()=>deleteOrder(order._id)} className='btn btn-xs bg-red-400 border-none'>Delete</button></td>
+            <td><Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs bg-success border-none'>Pay</button></Link></td>
+            <td><button className='btn btn-xs bg-red-400 border-none'>Cancel</button></td>
           </tr>)
         }
       

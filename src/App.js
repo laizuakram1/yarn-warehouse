@@ -14,6 +14,8 @@ import MyOrders from "./Pages/Dashboard/MyOrders";
 import SendReview from "./Pages/Dashboard/SendReview";
 import MyProfile from "./Pages/Dashboard/MyProfile";
 import Portfolio from "./Pages/Dashboard/Portfolio/Portfolio";
+import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
+import Payment from "./Pages/Dashboard/Payment";
 
 function App() {
   return (
@@ -22,25 +24,30 @@ function App() {
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        
+
         <Route path='/purchase/:id' element={
           <RequireAuth>
             <Purchase></Purchase>
           </RequireAuth>
         }></Route>
+
         <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
+
           <Route path='/dashboard/orders' element={<MyOrders></MyOrders>}></Route>
           <Route path='/dashboard/review' element={<SendReview></SendReview>}></Route>
           <Route path='/dashboard/profile' element={<MyProfile></MyProfile>}></Route>
-          
+          <Route path='/dashboard/payment/:id' element={<Payment></Payment>}></Route>
+          <Route path='/dashboard/admin' element={<MakeAdmin></MakeAdmin>}></Route>
         </Route>
+
+
         <Route path='/portfolio' element={<Portfolio></Portfolio>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
-        
+
       </Routes>
 
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 }

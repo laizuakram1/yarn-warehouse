@@ -10,7 +10,6 @@ const Navbar = () => {
     const navigate = useNavigate();
     
     const [user, loading, error] = useAuthState(auth);
-    console.log(user);
     if (loading) {
         return <Loading></Loading>
     }
