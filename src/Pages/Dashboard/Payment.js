@@ -8,11 +8,17 @@ import Loading from '../Shared/Loading';
 const Payment = () => {
     const {id} = useParams();
 
-    const {data:order, isLoading} = useQuery(['payment', id], ()=> fetch(`http://localhost:5000/purchase/${id}`,{
+    // fetch(`http://localhost:5000/purchase/${id}`)
+    // .then(res => res.json())
+    // .then(data => console.log(data))
+
+
+    const {data:order, isLoading} = useQuery(['payment', id], ()=> fetch(`http://localhost:5000/buy/${id}`,{
         method:'GET',
 
     }).then(res => res.json()))
     console.log(order)
+    
 
     if(isLoading){
         return <Loading></Loading>
@@ -20,7 +26,9 @@ const Payment = () => {
 
     return (
         <div>
-            <h2>Payment your order for:{order._id} </h2>
+            <h2>Payment your order for:{order.product} </h2>
+            <p>Quantity:{order.quantity}</p>
+            <p>price:{order.price}</p>
            
         </div>
     );
