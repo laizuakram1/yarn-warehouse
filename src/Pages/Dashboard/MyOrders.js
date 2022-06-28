@@ -29,12 +29,10 @@ const deleteOrder = (id)=>{
           setOrders(remainingOrders);
           toast.warn('Order deleted');
         }
-        
-        
+      
       })
     }
- 
-}
+ }
 
 
   
@@ -62,7 +60,7 @@ const deleteOrder = (id)=>{
             <td>{order.quantity}</td>
             <td>{order.price}</td>
             <td><Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs bg-success border-none'>Pay</button></Link></td>
-            <td><button className='btn btn-xs bg-red-400 border-none'>Cancel</button></td>
+            <td><button onClick={deleteOrder} className='btn btn-xs bg-red-400 border-none'>Cancel</button></td>
           </tr>)
         }
       

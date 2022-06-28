@@ -11,21 +11,16 @@ import { useForm } from "react-hook-form";
 const MyProfile = () => {
     const [user] = useAuthState(auth);
 
-
-
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         console.log(data)
-        
-        const userProfile = data;
-       
        
         fetch(`http://localhost:5000/profile`,{
             method:'POST',
                 headers: {
                     'content-type': 'application/json'
                 },
-                body:JSON.stringify(userProfile)
+                body:JSON.stringify(data)
         })
         .then(res => res.json())
         .then(Resdata => console.log(Resdata))
