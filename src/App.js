@@ -16,6 +16,9 @@ import MyProfile from "./Pages/Dashboard/MyProfile";
 import Portfolio from "./Pages/Dashboard/Portfolio/Portfolio";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
 import Payment from "./Pages/Dashboard/Payment";
+import NotFound from "./Pages/Shared/NotFound";
+
+
 
 function App() {
   return (
@@ -24,6 +27,7 @@ function App() {
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/home' element={<Home></Home>}></Route>
 
         <Route path='/purchase/:id' element={
           <RequireAuth>
@@ -44,7 +48,8 @@ function App() {
         <Route path='/portfolio' element={<Portfolio></Portfolio>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
-
+        <Route path='*' element={<NotFound></NotFound>}></Route>
+       
       </Routes>
 
       <ToastContainer />
