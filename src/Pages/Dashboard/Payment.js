@@ -8,12 +8,12 @@ import Loading from '../Shared/Loading';
 const Payment = () => {
     const {id} = useParams();
 
-    // fetch(`http://localhost:5000/purchase/${id}`)
+    // fetch(`https://protected-journey-61299.herokuapp.com/purchase/${id}`)
     // .then(res => res.json())
     // .then(data => console.log(data))
 
 
-    const {data:order, isLoading} = useQuery(['payment', id], ()=> fetch(`http://localhost:5000/buy/${id}`,{
+    const {data:order, isLoading} = useQuery(['payment', id], ()=> fetch(`https://protected-journey-61299.herokuapp.com/buy/${id}`,{
         method:'GET',
 
     }).then(res => res.json()))

@@ -17,6 +17,7 @@ import Portfolio from "./Pages/Dashboard/Portfolio/Portfolio";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
 import Payment from "./Pages/Dashboard/Payment";
 import NotFound from "./Pages/Shared/NotFound";
+import Blogs from "./Pages/Home/Blogs";
 
 
 
@@ -43,6 +44,8 @@ function App() {
           <Route path='/dashboard/payment/:id' element={<Payment></Payment>}></Route>
           <Route path='/dashboard/admin' element={<MakeAdmin></MakeAdmin>}></Route>
         </Route>
+
+        <Route path='/blog' element={<Blogs></Blogs>}></Route>
 
 
         <Route path='/portfolio' element={<Portfolio></Portfolio>}></Route>

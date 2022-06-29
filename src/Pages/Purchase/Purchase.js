@@ -15,13 +15,15 @@ const Purchase = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://protected-journey-61299.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data));
 
     }, [id]);
 
-
+    if(loading){
+        return <loading></loading>
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -43,7 +45,7 @@ const Purchase = () => {
 
         
 
-        fetch(`http://localhost:5000/purchase`, {
+        fetch(`https://protected-journey-61299.herokuapp.com/purchase`, {
             method: 'POST',
             headers: {
                  'content-type': 'application/json'

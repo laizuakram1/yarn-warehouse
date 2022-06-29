@@ -8,7 +8,12 @@ const MyOrders = () => {
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/purchase`)
+    fetch(`https://protected-journey-61299.herokuapp.com/purchase`,{
+      method:'GET',
+      headers:{
+        'authorization':`Bearer ${localStorage.getItem('accessToken')}`
+      }
+    })
         .then(res => res.json())
         .then(data => setOrders(data));
 }, [])
@@ -17,7 +22,7 @@ const deleteOrder = (id)=>{
     const proced = window.confirm('sure! cancel your order?');
     
     if(proced){
-      fetch(`http://localhost:5000/purchase/${id}`,{
+      fetch(`https://protected-journey-61299.herokuapp.com/purchase/${id}`,{
         method:'DELETE',
 
       })

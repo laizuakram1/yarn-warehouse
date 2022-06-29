@@ -5,7 +5,7 @@ const Buyer = () => {
     const [buyers, setBuyers] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/buyer`)
+        fetch(`https://protected-journey-61299.herokuapp.com/buyer`)
             .then(res => res.json())
             .then(data => setBuyers(data));
     }, [])
