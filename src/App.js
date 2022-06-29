@@ -18,6 +18,8 @@ import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
 import Payment from "./Pages/Dashboard/Payment";
 import NotFound from "./Pages/Shared/NotFound";
 import Blogs from "./Pages/Home/Blogs";
+import AddProduct from "./Pages/Dashboard/AddProduct";
+import ManageAllOrders from "./Pages/Dashboard/ManageAllOrders";
 
 
 
@@ -43,6 +45,8 @@ function App() {
           <Route path='/dashboard/profile' element={<MyProfile></MyProfile>}></Route>
           <Route path='/dashboard/payment/:id' element={<Payment></Payment>}></Route>
           <Route path='/dashboard/admin' element={<MakeAdmin></MakeAdmin>}></Route>
+          <Route path='/dashboard/addProduct' element={<AddProduct></AddProduct>}></Route>
+          <Route path='/dashboard/manageOrders' element={<ManageAllOrders></ManageAllOrders>}></Route>
         </Route>
 
         <Route path='/blog' element={<Blogs></Blogs>}></Route>

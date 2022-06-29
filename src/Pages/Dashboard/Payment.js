@@ -7,7 +7,6 @@ import Loading from '../Shared/Loading';
 
 const Payment = () => {
     const {id} = useParams();
-    const {orders, setOrders} = useState([])
 
     // fetch(`https://protected-journey-61299.herokuapp.com/buy/${id}`)
     // .then(res => res.json())
@@ -20,6 +19,7 @@ const Payment = () => {
 
     })
     .then(res => res.json()))
+    console.log(order)
 
     if(isLoading){
         return <Loading></Loading>
@@ -27,7 +27,7 @@ const Payment = () => {
 
     return (
         <div>
-            <h2> please palace your payment:{order.length}</h2>
+            <p>please pay for :{order._id}</p>
            
         </div>
     );

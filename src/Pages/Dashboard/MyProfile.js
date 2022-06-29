@@ -16,7 +16,7 @@ const MyProfile = () => {
     const onSubmit = data => {
         console.log(data)
        
-        fetch(`https://protected-journey-61299.herokuapp.com/profile/${email}`,{
+        fetch(`https://protected-journey-61299.herokuapp.com/${email}`,{
             method:'PUT',
                 headers: {
                     'content-type': 'application/json'
