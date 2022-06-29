@@ -21,13 +21,8 @@ const Dashboard = () => {
                 <label for="dashboard-sidebar" class="drawer-overlay"></label>
                 <ul class="menu p-4 mr-3 overflow-y-auto w-64 bg-green-100 text-base-content">
                     {/* <!-- Sidebar content here --> */}
-                    {
-                        (user && !admin) && <>
-                            <li className='hover:link-hover'><Link to='/dashboard/orders'>My orders</Link></li>
+                    <li className='hover:link-hover'><Link to='/dashboard/orders'>My orders</Link></li>
                             <li className='hover:link-hover'><Link to='/dashboard/review'>Send Review</Link></li>
-                        </>
-
-                    }
                     <li className='hover:link-hover'><Link to='/dashboard/profile'>My Profile</Link></li>
 
                     {
