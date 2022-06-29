@@ -4,6 +4,7 @@ import { FaBookOpen, FaFacebook, FaLinkedin, FaTwitterSquare, FaUserGraduate, Fa
 import { HiMail } from "react-icons/hi";
 import userImg from '../../../Images/Slider/main.jpg'
 import auth from '../../../firebase.init';
+import { Link } from 'react-router-dom';
 
 
 const Portfolio = () => {
@@ -29,10 +30,12 @@ const Portfolio = () => {
                 <div class="divider text-primary">Connect with me</div>
                 <div className='flex justify-center items-center h-12  text-xl'>
                    
-                    <FaFacebook className='mr-5 hover:text-orange-500'></FaFacebook>
+                  <a href="https://www.facebook.com/profile.php?id=100010547709729" target='blank'> <FaFacebook className='mr-5 hover:text-orange-500'></FaFacebook></a>
+                   
                     <FaLinkedin className=' mr-5 hover:text-orange-500'></FaLinkedin>
                     <FaTwitterSquare className='mr-5 hover:text-orange-500'></FaTwitterSquare>
-                    <FaYoutube className='mr-5 hover:text-orange-500'></FaYoutube>
+                    <a href="https://www.youtube.com/channel/UCxziMEGWaHSfghDeCPMkIzw" target='blank' > <FaYoutube className='mr-5 hover:text-orange-500'></FaYoutube></a>
+                   
                 </div>
             </div>
         </div>
