@@ -1,5 +1,5 @@
 # live link
-[live link](https://laizu-yarn.web.app/).
+[live link](https://laizu-yarn.web.app)
 
  ## Project description
  > I will try to build this project more dynamic and functionalities. This is a Yarn manufacturing website, they are supply production and supply yarn world wide. This porject I have use many others programming language list below:
