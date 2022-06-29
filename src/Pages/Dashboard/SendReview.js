@@ -7,7 +7,7 @@ const SendReview = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
 
-        fetch(`http://localhost:5000/review`, {
+        fetch(`https://protected-journey-61299.herokuapp.com/review`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

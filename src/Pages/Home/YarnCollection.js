@@ -5,7 +5,7 @@ const YarnCollection = () => {
     const [yarns, setYarns] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products`,{
+        fetch(`https://protected-journey-61299.herokuapp.com/products`,{
             method:'GET',
             headers:{
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

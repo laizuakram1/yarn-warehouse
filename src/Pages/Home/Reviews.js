@@ -6,7 +6,7 @@ const Reviews = () => {
     
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews`,{
+        fetch(`https://protected-journey-61299.herokuapp.com/reviews`,{
             headers:{
                 'authorization':`Bearer ${localStorage.getItem('accessToken')}`
             }

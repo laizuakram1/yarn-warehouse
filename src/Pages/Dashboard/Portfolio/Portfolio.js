@@ -3,8 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { FaBookOpen, FaFacebook, FaLinkedin, FaTwitterSquare, FaUserGraduate, FaYoutube, } from 'react-icons/fa';
 import { HiMail } from "react-icons/hi";
 import userImg from '../../../Images/Slider/main.jpg'
-import auth from '../../../firebase.init';
-import { Link } from 'react-router-dom';
+
 
 
 const Portfolio = () => {
