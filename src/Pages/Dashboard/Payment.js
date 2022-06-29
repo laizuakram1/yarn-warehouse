@@ -7,18 +7,19 @@ import Loading from '../Shared/Loading';
 
 const Payment = () => {
     const {id} = useParams();
+    const {orders, setOrders} = useState([])
 
-    // fetch(`https://protected-journey-61299.herokuapp.com/purchase/${id}`)
+    // fetch(`https://protected-journey-61299.herokuapp.com/buy/${id}`)
     // .then(res => res.json())
-    // .then(data => console.log(data))
+    // .then(data => setOrders(data))
+    
 
 
-    const {data:order, isLoading} = useQuery(['payment', id], ()=> fetch(`https://protected-journey-61299.herokuapp.com/buy/${id}`,{
+    const {data:order, isLoading} = useQuery(['order', id], ()=> fetch(`https://protected-journey-61299.herokuapp.com/buy/${id}`,{
         method:'GET',
 
-    }).then(res => res.json()))
-    console.log(order)
-    
+    })
+    .then(res => res.json()))
 
     if(isLoading){
         return <Loading></Loading>
@@ -26,9 +27,7 @@ const Payment = () => {
 
     return (
         <div>
-            <h2>Payment your order for:{order.product} </h2>
-            <p>Quantity:{order.quantity}</p>
-            <p>price:{order.price}</p>
+            <h2> please palace your payment:{order.length}</h2>
            
         </div>
     );
