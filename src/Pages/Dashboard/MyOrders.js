@@ -8,7 +8,7 @@ const MyOrders = () => {
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
-    fetch(`https://protected-journey-61299.herokuapp.com/purchase`,{
+    fetch(`http://localhost:5000/purchase`,{
       method:'GET',
       headers:{
         'authorization':`Bearer ${localStorage.getItem('accessToken')}`

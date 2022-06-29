@@ -7,7 +7,7 @@ const SendReview = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
 
-        fetch(`https://protected-journey-61299.herokuapp.com/reviews`, {
+        fetch(`http://localhost:5000/review`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -16,6 +16,7 @@ const SendReview = () => {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 toast.success('send review');
             })
     }; 

@@ -19,17 +19,15 @@ const AdminRow = ({ user, index, refetch }) => {
     }
 
     return (
-        <div>
-            <tr>
-                <th>{index + 1}</th>
-                <td>{email}</td>
-                <td>{
-                role !== 'admin'? <button onClick={MakeAdmin} className='btn btn-xs'>Make Admin</button>
-                : <button className='btn btn-xs bg-success border-none'>Admin</button>}</td>
-                <td><button className='btn btn-xs bg-red-500 border-none'>Delete</button></td>
-                
-            </tr>
-        </div>
+        <tr>
+        <th>{index + 1}</th>
+        <td>{email}</td>
+        <td>{
+        role !== 'admin'? <button onClick={MakeAdmin} className='btn btn-xs'>Make Admin</button>
+        : <button className='btn btn-xs bg-success border-none'>Admin</button>}</td>
+        <td><button className='btn btn-xs bg-red-500 border-none'>Delete</button></td>
+        
+    </tr>
     );
 };
 
