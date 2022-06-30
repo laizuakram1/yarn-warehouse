@@ -24,15 +24,10 @@ const Dashboard = () => {
                     <li className='hover:link-hover'><Link to='/dashboard/orders'>My orders</Link></li>
                             <li className='hover:link-hover'><Link to='/dashboard/review'>Send Review</Link></li>
                     <li className='hover:link-hover'><Link to='/dashboard/profile'>My Profile</Link></li>
-
-                    {
-                        admin && <>
-                            <li className='hover:link-hover'><Link to='/dashboard/admin'>Make Admin</Link></li>
+                    <li className='hover:link-hover'><Link to='/dashboard/admin'>Make Admin</Link></li>
                             <li className='hover:link-hover'><Link to='/dashboard/addProduct'>Add new Product</Link></li>
                             <li className='hover:link-hover'><Link to='/dashboard/manageOrders'>Manage all orders</Link></li>
-
-                        </>
-                    }
+                   
                 </ul>
 
             </div>
