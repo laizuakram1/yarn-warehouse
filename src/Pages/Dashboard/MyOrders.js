@@ -19,7 +19,7 @@ const MyOrders = () => {
 }, [])
 
 const deleteOrder = (id)=>{
-    const proced = window.confirm('sure! cancel your order?');
+    const proced = window.confirm('are you sure! cancel your order?');
     
     if(proced){
       fetch(`https://protected-journey-61299.herokuapp.com/purchase/${id}`,{

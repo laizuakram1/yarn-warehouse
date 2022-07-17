@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 
 
 
@@ -10,24 +11,31 @@ import { useForm } from "react-hook-form";
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
+    console.log(user);
     const email = user.email;
 
-    const { register, handleSubmit } = useForm();
+    const { register, reset, handleSubmit } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        console.log(data);
        
-        fetch(`https://protected-journey-61299.herokuapp.com/${email}`,{
+        fetch(`http://localhost:5000/profile/${email}`,{
             method:'PUT',
                 headers: {
                     'content-type': 'application/json'
                 },
-                body:JSON.stringify({data})
+                body:JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(Resdata => console.log(Resdata))
+        .then(data => {
+            if(data.insertedId){
+                reset()
+            }
+            toast.success('Profile update successful');
+        })
     
     };
 
+    
     return (
 
         <div class="hero min-h-screen bg-base-200">
@@ -63,8 +71,8 @@ const MyProfile = () => {
                         <div class="card-body items-center text-center">
                             <h2 class="card-title">{user?.displayName}</h2>
                             <p>{user?.email}</p>
-                            <p>Education:</p>
-                            <p>Location:</p>
+                            <p>{user?.phoneNumber}</p>
+                            
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { FaBookOpen, FaFacebook, FaLinkedin, FaTwitterSquare, FaUserGraduate, FaYoutube, } from 'react-icons/fa';
 import { HiMail } from "react-icons/hi";
 import userImg from '../../../Images/Slider/main.jpg'
@@ -20,9 +19,9 @@ const Portfolio = () => {
             </figure>
             <div class="card-body items-center text-center">
                 <h2 class="card-title">Laizu Akram</h2>
-                <p><HiMail className='inline mr-2'></HiMail>laizuakram98@gmail.com</p>
-                <p><FaUserGraduate className='inline mr-2'></FaUserGraduate>Dimplopa in Medical Technologist</p>
-                <p><FaBookOpen className='inline mr-2'></FaBookOpen>K.H Memorial health technology Institute</p>
+                <p><HiMail className='inline mr-2 text-orange-500'></HiMail>laizuakram98@gmail.com</p>
+                <p><FaUserGraduate className='inline mr-2 text-orange-500'></FaUserGraduate>Dimploma in Medical Technologist</p>
+                <p><FaBookOpen className='inline mr-2 text-orange-500'></FaBookOpen>K.H Memorial health technology Institute</p>
                
             </div>
             <div class="border-opacity-50">

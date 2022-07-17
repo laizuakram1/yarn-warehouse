@@ -1,8 +1,9 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 
 const AddProduct = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, reset, handleSubmit } = useForm();
     const onSubmit = data => {
 
         fetch(`https://protected-journey-61299.herokuapp.com/product`,{
@@ -15,7 +16,8 @@ const AddProduct = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log('send data successful')
+            toast.success('Added a new products')
+            reset();
         })
     };
     return (

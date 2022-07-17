@@ -58,6 +58,7 @@ const Purchase = () => {
                
                 if (data.result.insertedId) {
                     toast.success("Order Placed Successfully")
+                   
                 } else {
                     toast.error('Sorry,cannot process the order')
                 }
