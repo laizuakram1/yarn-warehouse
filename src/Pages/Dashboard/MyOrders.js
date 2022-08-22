@@ -1,28 +1,35 @@
 
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 
 const MyOrders = () => {
+  const {user} = useAuthState(auth)
   const [orders, setOrders] = useState([])
+  console.log(orders)
 
-  useEffect(() => {
-    fetch(`https://protected-journey-61299.herokuapp.com/purchase`,{
+  const email = user?.email;
+
+  useEffect(()=>{
+    fetch(`http://localhost:5000/purchase/${email}`,{
       method:'GET',
-      headers:{
-        'authorization':`Bearer ${localStorage.getItem('accessToken')}`
-      }
+
     })
-        .then(res => res.json())
-        .then(data => setOrders(data));
-}, [])
+    .then(res => res.json())
+    .then(data =>{
+      console.log(data);
+    })
+  },[email])
+
 
 const deleteOrder = (id)=>{
     const proced = window.confirm('are you sure! cancel your order?');
     
     if(proced){
-      fetch(`https://protected-journey-61299.herokuapp.com/purchase/${id}`,{
+      fetch(`http://localhost:5000/purchase/${id}`,{
         method:'DELETE',
 
       })
@@ -44,8 +51,8 @@ const deleteOrder = (id)=>{
   return (
     <div>
 
-      <div class="overflow-x-auto">
-  <table class="table table-zebra w-full justify-around">
+      <div className="overflow-x-auto">
+  <table className="table table-zebra w-full justify-around">
     <thead>
       <tr>
         <th></th>

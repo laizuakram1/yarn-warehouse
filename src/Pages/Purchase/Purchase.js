@@ -42,7 +42,6 @@ const Purchase = () => {
             phone: event.target.phone.value,
             status: "pending",
         }
-
         
 
         fetch(`https://protected-journey-61299.herokuapp.com/purchase`, {
@@ -55,6 +54,7 @@ const Purchase = () => {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                
                 if (data.result.insertedId) {
                     toast.success("Order Placed Successfully")

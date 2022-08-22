@@ -12,7 +12,7 @@ const Buyer = () => {
     return (
         <div className='mx-10' >
            <h2 className='text-3xl font-bold py-10'>Our <span className='text-success'>International</span> Buyers</h2>
-           <div className='grid grid-cols-5 gap-5'>
+           <div className='grid grid-cols-1 lg:grid-cols-4 gap-5'>
                 {
                     buyers.map(buyer =><DisplayBuyer
                     key = {buyer._id}
