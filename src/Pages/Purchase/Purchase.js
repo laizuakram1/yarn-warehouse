@@ -15,7 +15,7 @@ const Purchase = () => {
 
 
     useEffect(() => {
-        fetch(`https://protected-journey-61299.herokuapp.com/products/${id}`)
+        fetch(`https://yarn-warehouse-server.onrender.com/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data));
 

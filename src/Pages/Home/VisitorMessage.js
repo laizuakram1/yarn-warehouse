@@ -6,7 +6,7 @@ const VisitorMessage = () => {
   const { register, reset, handleSubmit } = useForm();
   const onSubmit = data => {
 
-    fetch(`https://protected-journey-61299.herokuapp.com/message`, {
+    fetch(`https://yarn-warehouse-server.onrender.com/message`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

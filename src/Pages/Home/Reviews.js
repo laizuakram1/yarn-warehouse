@@ -6,7 +6,7 @@ const Reviews = () => {
     
 
     useEffect(() => {
-        fetch(`https://protected-journey-61299.herokuapp.com/reviews`,{
+        fetch(`https://yarn-warehouse-server.onrender.com//reviews`,{
             headers:{
                 'authorization':`Bearer ${localStorage.getItem('accessToken')}`
             }
