@@ -14,7 +14,7 @@ const MyOrders = () => {
   const email = user?.email;
 
   useEffect(()=>{
-    fetch(`http://localhost:5000/purchase/${email}`,{
+    fetch(`https://yarn-warehouse-server.onrender.com/${email}`,{
       method:'GET',
 
     })
@@ -29,7 +29,7 @@ const deleteOrder = (id)=>{
     const proced = window.confirm('are you sure! cancel your order?');
     
     if(proced){
-      fetch(`http://localhost:5000/purchase/${id}`,{
+      fetch(`https://yarn-warehouse-server.onrender.com/purchase/${id}`,{
         method:'DELETE',
 
       })

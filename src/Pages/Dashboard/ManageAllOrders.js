@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const ManageAllOrders = () => {
     const [orders, setOrders] = useState([])
 
-    fetch(`http://localhost:5000/purchase`)
+    fetch(`https://yarn-warehouse-server.onrender.com/purchase`)
     .then(res => res.json())
     .then(data => {
         setOrders(data);
@@ -15,7 +15,7 @@ const ManageAllOrders = () => {
         const proced = window.confirm('are you sure! cancel your order?');
         
         if(proced){
-          fetch(`http://localhost:5000/purchase/${id}`,{
+          fetch(`https://yarn-warehouse-server.onrender.com/purchase/${id}`,{
             method:'DELETE',
     
           })

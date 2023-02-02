@@ -18,7 +18,7 @@ const MyProfile = () => {
     const onSubmit = data => {
         console.log(data);
        
-        fetch(`http://localhost:5000/profile/${email}`,{
+        fetch(`https://yarn-warehouse-server.onrender.com/profile/${email}`,{
             method:'PUT',
                 headers: {
                     'content-type': 'application/json'

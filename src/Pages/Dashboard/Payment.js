@@ -14,7 +14,7 @@ const Payment = () => {
     const { id } = useParams();
 
 
-    const { data: order, isLoading } = useQuery(['order', id], () => fetch(`https://protected-journey-61299.herokuapp.com/buy/${id}`, {
+    const { data: order, isLoading } = useQuery(['order', id], () => fetch(`https://yarn-warehouse-server.onrender.com/buy/${id}`, {
         method: 'GET',
 
     })

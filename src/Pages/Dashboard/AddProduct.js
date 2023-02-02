@@ -6,7 +6,7 @@ const AddProduct = () => {
     const { register, reset, handleSubmit } = useForm();
     const onSubmit = data => {
 
-        fetch(`https://protected-journey-61299.herokuapp.com/product`,{
+        fetch(`https://yarn-warehouse-server.onrender.com/product`,{
             method:`POST`,
             headers:{
                 'content-type':'application/json',

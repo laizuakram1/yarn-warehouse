@@ -21,7 +21,7 @@ const CheckoutForm = ({order}) => {
 
 
     useEffect(()=>{
-        fetch(`https://protected-journey-61299.herokuapp.com/create-payment-intent`,{
+        fetch(`https://yarn-warehouse-server.onrender.com/create-payment-intent`,{
             method:'POST',
             headers:{
                 'content-type':'application/json'

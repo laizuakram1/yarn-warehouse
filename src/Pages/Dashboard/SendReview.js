@@ -7,7 +7,7 @@ const SendReview = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
 
-        fetch(`https://protected-journey-61299.herokuapp.com/review`, {
+        fetch(`https://yarn-warehouse-server.onrender.com/review`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

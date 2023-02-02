@@ -5,7 +5,7 @@ const AdminRow = ({ user, index, refetch }) => {
     const { email, role } = user;
 
     const MakeAdmin = ()=>{
-        fetch(`https://protected-journey-61299.herokuapp.com/user/admin/${email}`,{
+        fetch(`https://yarn-warehouse-server.onrender.com/${email}`,{
             method:'PUT',
         })
         .then(res =>res.json())
